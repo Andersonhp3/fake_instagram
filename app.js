@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var IndexRouter = require('./routes/IndexRouter');
+var session = require('express-session')
 
 var app = express();
 
@@ -15,6 +16,7 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(session({secret: "segredos"}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
